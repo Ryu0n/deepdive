@@ -1,0 +1,15 @@
+export AWS_REGION=us-east-1
+export EKS_CLUSTER_NAME=sagemaker-hyperpod-eks-cluster-3
+export EKS_CLUSTER_ARN=arn:aws:eks:us-east-1:569659514718:cluster/sagemaker-hyperpod-eks-cluster-3
+export S3_BUCKET_NAME=sagemaker-hyperpod-eks-3-bucket-569659514718-us-east-1
+export EXECUTION_ROLE=arn:aws:iam::569659514718:role/sagemaker-hyperpod-eks-3-SMHP-Exec-Role-us-east-1
+export VPC_ID=vpc-02d25f6a055ee303e
+export PRIVATE_SUBNET_ID=subnet-02d0fdf90616e407f
+export SECURITY_GROUP_ID=sg-0e4d6503ec2eeab31
+export ACCEL_INSTANCE_TYPE=ml.g5.12xlarge
+export ACCEL_INSTANCE_COUNT=1
+export ACCEL_VOLUME_SIZE=500
+export GEN_INSTANCE_TYPE=ml.m5.2xlarge
+export GEN_INSTANCE_COUNT=1
+export GEN_VOLUME_SIZE=500
+export NODE_RECOVERY=Automatic

@@ -1,0 +1,1 @@
+Reference : https://catalog.workshops.aws/sagemaker-hyperpod-eks/en-US/01-cluster/06-fsx-for-lustre

@@ -1,0 +1,34 @@
+{
+    "ClusterName": "ml-cluster-3",
+    "Orchestrator": {
+        "Eks": {
+            "ClusterArn": "arn:aws:eks:us-east-1:569659514718:cluster/sagemaker-hyperpod-eks-cluster-3"
+        }
+    },
+    "InstanceGroups": [       
+        {
+            "InstanceGroupName": "worker-group-2",
+            "InstanceType": "ml.p5.48xlarge",
+            "InstanceCount": 1,
+            "InstanceStorageConfigs": [
+                {
+                    "EbsVolumeConfig": {
+                        "VolumeSizeInGB": 500
+                    }
+                }
+            ],
+            "LifeCycleConfig": {
+                "SourceS3Uri": "s3://sagemaker-hyperpod-eks-3-bucket-569659514718-us-east-1",
+                "OnCreate": "on_create.sh"
+            },
+            "ExecutionRole": "arn:aws:iam::569659514718:role/sagemaker-hyperpod-eks-3-SMHP-Exec-Role-us-east-1",
+            "ThreadsPerCore": 2,
+            "OnStartDeepHealthChecks": ["InstanceStress", "InstanceConnectivity"],
+            "TrainingPlanArn": "arn:aws:sagemaker:us-east-1:569659514718:training-plan/summit-training-plan"
+        }],
+    "VpcConfig": {
+        "SecurityGroupIds": ["sg-0e4d6503ec2eeab31"],
+        "Subnets": ["subnet-02d0fdf90616e407f"]
+    },
+    "NodeRecovery": "Automatic"
+}

@@ -1,0 +1,50 @@
+{
+    "ClusterName": "ml-cluster",
+    "Orchestrator": {
+        "Eks": {
+            "ClusterArn": "arn:aws:eks:us-east-1:569659514718:cluster/sagemaker-hyperpod-eks-cluster-2"
+        }
+    },
+    "InstanceGroups": [    
+        {
+            "InstanceGroupName": "worker-group-1",
+            "InstanceType": "ml.g5.12xlarge",
+            "InstanceCount": 1,
+            "InstanceStorageConfigs": [
+                {
+                    "EbsVolumeConfig": {
+                        "VolumeSizeInGB": 500
+                    }
+                }
+            ],
+            "LifeCycleConfig": {
+                "SourceS3Uri": "s3://sagemaker-hyperpod-eks-bucket-569659514718-us-east-1",
+                "OnCreate": "on_create.sh"
+            },
+            "ExecutionRole": "arn:aws:iam::569659514718:role/sagemaker-hyperpod-eks-SMHP-Exec-Role-us-east-1",
+            "ThreadsPerCore": 2
+        },    
+        {
+            "InstanceGroupName": "worker-group-2",
+            "InstanceType": "ml.m5.2xlarge",
+            "InstanceCount": 1,
+            "InstanceStorageConfigs": [
+                {
+                    "EbsVolumeConfig": {
+                        "VolumeSizeInGB": 500
+                    }
+                }
+            ],
+            "LifeCycleConfig": {
+                "SourceS3Uri": "s3://sagemaker-hyperpod-eks-bucket-569659514718-us-east-1",
+                "OnCreate": "on_create.sh"
+            },
+            "ExecutionRole": "arn:aws:iam::569659514718:role/sagemaker-hyperpod-eks-SMHP-Exec-Role-us-east-1",
+            "ThreadsPerCore": 1
+        }],
+    "VpcConfig": {
+        "SecurityGroupIds": ["sg-0c1e0c0a5a7cc206f"],
+        "Subnets": ["subnet-001a1dda7bee602a7"]
+    },
+    "NodeRecovery": "Automatic"
+}
